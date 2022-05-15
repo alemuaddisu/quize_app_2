@@ -1,16 +1,15 @@
 package edu.miu.quizapp
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
+import android.widget.*
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
-import edu.miu.quizapp.db.Quiz
-import edu.miu.quizapp.db.QuizDatabase
+import edu.miu.quizapp.db.Question
+import edu.miu.quizapp.db.QuestionDatabase
 import edu.miu.quizapp.utils.BaseFragment
 import edu.miu.quizapp.utils.toast
 import kotlinx.coroutines.launch
@@ -18,76 +17,79 @@ import kotlinx.coroutines.launch
 class QuestionFragment : BaseFragment()  {
 
     private lateinit var tvQuestion: TextView
-    private lateinit var tvScore: TextView
-    private lateinit var radioGroup: RadioGroup
-    private lateinit var questions: List<Quiz>
+    private lateinit var optionsRadioGroup: RadioGroup
+    private lateinit var questions: List<Question>
     private var qstnIdx = 0
     private var score = 0
     private lateinit var selectedChoice: String
-    private lateinit var currentQuiz: Quiz
+    private lateinit var currentQuestion: Question
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_question, container, false)
-        val skipBtn = view.findViewById<Button>(R.id.btn_qstn_skip)
-        val nextBtn = view.findViewById<Button>(R.id.btn_qstn_next)
+        val skipButton = view.findViewById<Button>(R.id.skipButton)
+        val nextButton = view.findViewById<Button>(R.id.nextButton)
+        val allProgressBar = view.findViewById<ProgressBar>(R.id.allProgressBar)
+        val correctProgressBar = view.findViewById<ProgressBar>(R.id.correctProgressBar)
+       
         tvQuestion = view.findViewById(R.id.tv_question)
-        tvScore = view.findViewById(R.id.tv_score)
         launch {
             context?.let {
-                questions = QuizDatabase(it).getQuizDao().getAllQuizzes()
+                questions = QuestionDatabase(it).getQuestionDao().getAllQuestions()
                 changeQuestion(view)
             }
         }
-        skipBtn.setOnClickListener {
+        nextButton.setOnClickListener {
+            evaluateAnswer(selectedChoice)
+            correctProgressBar.progress = score;
+            allProgressBar.progress = qstnIdx;
             changeQuestion(view)
         }
-        nextBtn.setOnClickListener {
-            evaluateAnswer(selectedChoice)
-            changeQuestion(view)
+        skipButton.setOnClickListener {
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_questionFragment_to_homeFragment2)
         }
-        radioGroup = view.findViewById(R.id.question_radio)
-        radioGroup.setOnCheckedChangeListener(this::handler)
+        optionsRadioGroup = view.findViewById(R.id.optionsRadioGroup)
+        optionsRadioGroup.setOnCheckedChangeListener(this::handler)
         return view
     }
 
 
     private fun changeQuestion(view: View) {
-        if(qstnIdx + 14 <= questions.size){
-            currentQuiz = questions[qstnIdx]
-            tvQuestion.text = currentQuiz.question
-            val radioGroup = view.findViewById(R.id.question_radio) as RadioGroup
-            val questionChoices = listOf(currentQuiz.a,currentQuiz.b,currentQuiz.c,currentQuiz.d)
-            for (i in 0 until radioGroup.childCount) {
-                (radioGroup.getChildAt(i) as RadioButton).text = questionChoices[i]
+        if(qstnIdx < questions.size){ // TODO: remove add value to go to all page
+            currentQuestion = questions[qstnIdx]
+            tvQuestion.text = currentQuestion.question
+            val optionsRadioGroup = view.findViewById(R.id.optionsRadioGroup) as RadioGroup
+            val questionChoices = listOf(currentQuestion.optionA,currentQuestion.optionB,currentQuestion.optionC,currentQuestion.optionD)
+            for (i in 0 until optionsRadioGroup.childCount) {
+                (optionsRadioGroup.getChildAt(i) as RadioButton).text = questionChoices[i]
             }
             qstnIdx++
-            radioGroup.clearCheck()
+            optionsRadioGroup.clearCheck()
         }
         else{
+            val bundle = bundleOf("score" to score)
             Navigation.findNavController(requireView())
-                .navigate(R.id.action_questionFragment_to_resultFragment)
+                .navigate(R.id.action_questionFragment_to_resultFragment,bundle)
         }
     }
 
     private fun handler(group: RadioGroup, checkedId: Int) {
         when (checkedId) {
-            R.id.radio_q1_a -> selectedChoice = "a"
-            R.id.radio_q1_b -> selectedChoice = "b"
-            R.id.radio_q1_c -> selectedChoice = "c"
-            R.id.radio_q1_d -> selectedChoice = "d"
+            R.id.option1RadioButton -> selectedChoice = "a"
+            R.id.option2RadioButton -> selectedChoice = "b"
+            R.id.option3RadioButton -> selectedChoice = "c"
+            R.id.option4RadioButton -> selectedChoice = "d"
         }
     }
 
     private fun evaluateAnswer(ans: String){
-        if(currentQuiz.answer == ans){
+        if(currentQuestion.correctAnswer == ans){
             score++
         }
-        tvScore.text = String.format("%d/15",score)
+
     }
 
 

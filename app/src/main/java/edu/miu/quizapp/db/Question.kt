@@ -7,8 +7,8 @@ import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 @Parcelize
-@Entity(tableName = "quiz")
-data class Quiz(
+@Entity(tableName = "Question")
+data class Question(
     @PrimaryKey
     val id: Int,
     val question: String,

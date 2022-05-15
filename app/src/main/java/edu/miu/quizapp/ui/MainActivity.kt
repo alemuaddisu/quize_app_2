@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             // Is the button now checked?
             val checked = view.isChecked
             when (view.getId()) {
-                R.id.radio_q1_b ->
+                R.id.option1RadioButton ->
                     if (checked) {
                         result +=50
                     }

@@ -15,12 +15,15 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import edu.miu.quizapp.db.Question
+import edu.miu.quizapp.db.QuestionDatabase
 import edu.miu.quizapp.utils.BaseFragment
 import edu.miu.quizapp.utils.PrefManager
+import edu.miu.quizapp.utils.toast
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import kotlin.math.log
 
-import edu.miu.quizapp.toast
 
 class WelcomeFragment : BaseFragment() {
 
@@ -124,6 +127,18 @@ class WelcomeFragment : BaseFragment() {
 
         })
 
+
+          launch {
+            context?.let {
+                val utility = Utility(it)
+                val questions = utility.getDataFromJson("questions")
+                QuestionDatabase(it).getQuestionDao().deleteAllQuestions() // TODO: no need to delete
+                QuestionDatabase(it)
+                    .getQuestionDao().addQuestions(questions)
+                utility.setRun()
+
+            }
+        }
         return view
 
 }

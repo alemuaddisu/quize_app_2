@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.Navigation
-import edu.miu.quizapp.db.Quiz
-import edu.miu.quizapp.db.QuizDatabase
+import edu.miu.quizapp.db.Question
+import edu.miu.quizapp.db.QuestionDatabase
 import edu.miu.quizapp.utils.BaseFragment
 import kotlinx.coroutines.launch
 
 class HomeFragment : BaseFragment()  {
 
-    private lateinit var questions: List<Quiz>
+    private lateinit var questions: List<Question>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,9 +22,12 @@ class HomeFragment : BaseFragment()  {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val startButton = view.findViewById<Button>(R.id.startButton)
         val scoreTextView = view.findViewById<TextView>(R.id.scoreTextView)
+        val util = context?.let { Utility(it) };
+        val topScore = util?.getTopScore()
+        scoreTextView.text = ""+topScore
         launch {
             context?.let {
-                questions = QuizDatabase(it).getQuizDao().getAllQuizzes()
+                questions = QuestionDatabase(it).getQuestionDao().getAllQuestions()
             }
         }
         startButton.setOnClickListener {
