@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp">
         <activity
-            android:name="edu.miu.quizapp.ui.MainActivity"
+            android:name="edu.miu.quizapp.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

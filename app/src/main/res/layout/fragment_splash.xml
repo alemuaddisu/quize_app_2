@@ -19,7 +19,7 @@
             android:src="@drawable/miu"/>
 
         <TextView
-            android:id="@+id/logo_welcome"
+            android:id="@+id/titleTextView"
             android:fontFamily="sans-serif-condensed-medium"
             android:textAlignment="center"
             android:textSize="20sp"

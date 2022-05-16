@@ -1,4 +1,4 @@
-package edu.miu.quizapp.ui
+package edu.miu.quizapp
 
 import android.os.Build
 import android.os.Bundle
@@ -9,7 +9,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import edu.miu.quizapp.R
 import edu.miu.quizapp.databinding.ActivityMainBinding
-import edu.miu.quizapp.db.QuizDatabase
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

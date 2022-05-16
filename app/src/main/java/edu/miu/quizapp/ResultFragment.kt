@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import edu.miu.quizapp.utils.BaseFragment
 import java.lang.Integer.max
@@ -21,13 +22,19 @@ class ResultFragment : BaseFragment() {
 
         val view = inflater.inflate(R.layout.fragment_result, container, false)
         val backButton = view.findViewById<Button>(R.id.backButton)
-        var kir = true
+        val reviewButton = view.findViewById<Button>(R.id.reviewButton)
         val yourScore = view.findViewById<TextView>(R.id.yourScoreTextView)
         val topScore = view.findViewById<TextView>(R.id.topScoreTextView)
+        val correctAnswer = view.findViewById<TextView>(R.id.correctTextView)
+        val wrongAnswer = view.findViewById<TextView>(R.id.wrongTextView)
 
         val util = context?.let { Utility(it) };
         var currentScore = arguments?.getInt("score")
-        yourScore.text = "" + currentScore
+        var userChoices = arguments?.getIntArray("userChoices")
+
+        correctAnswer.text = "" + currentScore
+        wrongAnswer.text = "" + (15 - currentScore!!)
+        yourScore.text = "" + ((currentScore/15)*100)
         var topScored = util?.getTopScore()
         if(currentScore!! > topScored!!){
             topScored = currentScore
@@ -37,14 +44,16 @@ class ResultFragment : BaseFragment() {
         topScore.text = "" + topScored
 
         backButton.setOnClickListener{
-        if(kir){
-                kir=false
-                Toast.makeText(context,"what eveadf",Toast.LENGTH_LONG)
-            }
-            else
-            Navigation.findNavController(requireView())
-                .navigate(R.id.action_resultFragment_to_homeFragment)
+
+            Navigation.findNavController(requireView()).navigate(R.id.action_resultFragment_to_homeFragment)
         }
+
+        reviewButton.setOnClickListener{
+            val bundle = bundleOf("userChoices" to userChoices)
+            Navigation.findNavController(requireView()).navigate(R.id.action_resultFragment_to_reviewFragment,bundle)
+        }
+
+
         return view
     }
 }
