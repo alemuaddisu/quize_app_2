@@ -93,7 +93,7 @@ class QuestionFragment : BaseFragment()  {
     }
 
     fun checkNextPage(): Boolean {
-        if(currentIndex +6 >= questions.size){
+        if(currentIndex >= questions.size){
             val bundle = bundleOf("score" to currentScore,"userChoices" to userChoices)
             Navigation.findNavController(requireView()).navigate(R.id.action_questionFragment_to_resultFragment,bundle)
             return false

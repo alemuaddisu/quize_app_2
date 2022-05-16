@@ -31,19 +31,16 @@ class SlideFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_welcome, container, false)
+        val view = inflater.inflate(R.layout.fragment_slide, container, false)
 
         activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
         viewPager = view.findViewById(R.id.view_pager) as ViewPager
-        dotsLayout = view.findViewById(R.id.layoutDots) as LinearLayout
-        btnSkip = view.findViewById(R.id.btn_skip) as Button
 
         cancelButton = view.findViewById(R.id.cancelFloatingActionButton) as FloatingActionButton
         prevButton = view.findViewById(R.id.prevFloatingActionButton) as FloatingActionButton
         nextButton = view.findViewById(R.id.nextFloatingActionButton) as FloatingActionButton
 
-        btnNext = view.findViewById(R.id.btn_next) as Button
 
         layouts = intArrayOf(
             R.layout.fragment_slide1,
@@ -114,7 +111,6 @@ class SlideFragment : BaseFragment() {
             context?.let {
                 val utility = Utility(it)
                 val questions = utility.getDataFromJson("questions")
-                QuestionDatabase(it).getQuestionDao().deleteAllQuestions() // TODO: no need to delete
                 QuestionDatabase(it)
                     .getQuestionDao().addQuestions(questions)
                 utility.setRun()

@@ -27,8 +27,8 @@ class RecyclerAdapter(private val questionList:List<Question>, private val userC
         val options = arrayOf("Not Answered",question.optionA,question.optionB,question.optionC,question.optionD)
 
         viewHolder.itemQuestion.text = "Q"+ (i+1) + ") " + question.question
-        viewHolder.itemUserAnswer.text = "Your Answer: "+options[userChoices.get(i).toInt()+1]
-        viewHolder.itemCorrectAnswer.text = "Correct Answer: " + options[Integer.valueOf(question.correctAnswer)]
+        viewHolder.itemUserAnswer.text = "Your Answer: "+options[(userChoices.get(i).toInt())+1]
+        viewHolder.itemCorrectAnswer.text = "Correct Answer: " + options[Integer.valueOf(question.correctAnswer)+1]
 
 
 

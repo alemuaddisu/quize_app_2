@@ -48,7 +48,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/_1_questions_list"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -68,9 +67,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:background="@color/material_blue_400"
-                        android:requiresFadingEdge="vertical"
-                        android:text="@string/true_answer"
                         android:textColor="?android:attr/windowBackground"
                         android:textSize="18sp" />
 
@@ -79,9 +75,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:background="@color/material_blue_400"
-                        android:requiresFadingEdge="vertical"
-                        android:text="@string/false_answer"
                         android:textColor="?android:attr/windowBackground"
                         android:textSize="18sp" />
 
@@ -90,9 +83,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:background="@color/material_blue_400"
-                        android:requiresFadingEdge="vertical"
-                        android:text="@string/i_am_not_sure"
                         android:textColor="?android:attr/windowBackground"
                         android:textSize="18sp" />
 
@@ -101,9 +91,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:background="@color/material_blue_400"
-                        android:requiresFadingEdge="vertical"
-                        android:text="@string/i_am_not_sure"
                         android:textColor="?android:attr/windowBackground"
                         android:textSize="18sp" />
                 </RadioGroup>
@@ -125,7 +112,7 @@
         android:layout_height="73dp"
         android:layout_marginStart="22dp"
         android:onClick="nextQuestion"
-        android:text="@string/btn_skip"
+        android:text="@string/skip"
         app:layout_constraintEnd_toStartOf="@+id/nextButton"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +124,7 @@
         android:layout_height="72dp"
         android:layout_marginEnd="22dp"
         android:onClick="skipQuestion"
-        android:text="@string/btn_next"
+        android:text="@string/next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
