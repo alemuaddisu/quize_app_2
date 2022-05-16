@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.miu.quizapp.db.QuestionDatabase
-import edu.miu.quizapp.utils.BaseFragment
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match

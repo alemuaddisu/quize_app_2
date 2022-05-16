@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
-import edu.miu.quizapp.utils.BaseFragment
-import java.lang.Integer.max
+import edu.miu.quizapp.utils.Utility
 
 class ResultFragment : BaseFragment() {
 
@@ -34,7 +32,7 @@ class ResultFragment : BaseFragment() {
 
         correctAnswer.text = "" + currentScore
         wrongAnswer.text = "" + (15 - currentScore!!)
-        yourScore.text = "" + ((currentScore/15)*100)
+        yourScore.text = "" + (currentScore * 5)
         var topScored = util?.getTopScore()
         if(currentScore!! > topScored!!){
             topScored = currentScore

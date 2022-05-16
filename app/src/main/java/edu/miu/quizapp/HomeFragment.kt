@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.Navigation
-import edu.miu.quizapp.utils.BaseFragment
+import edu.miu.quizapp.utils.Utility
 import kotlinx.coroutines.launch
 
 class HomeFragment : BaseFragment()  {

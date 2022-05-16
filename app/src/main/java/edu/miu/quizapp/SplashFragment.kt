@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.Navigation
-import edu.miu.quizapp.utils.BaseFragment
+import edu.miu.quizapp.utils.Utility
 
 class SplashFragment : BaseFragment() {
 
@@ -20,7 +20,7 @@ class SplashFragment : BaseFragment() {
 
         titleTextView.postDelayed({
             val utility = context?.let { Utility(it) }
-            if(utility?.isFirstRun() == true)
+            if(utility?.isFirstRun() == false)//todo
                 Navigation.findNavController(requireView()).navigate(R.id.action_splashFragment_to_welcomeFragment)
             else
                 Navigation.findNavController(requireView()).navigate(R.id.action_splashFragment_to_homeFragment)

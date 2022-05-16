@@ -24,10 +24,10 @@ class RecyclerAdapter(private val questionList:List<Question>, private val userC
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         val question = questionList.get(i)
-        val options = arrayOf(question.optionA,question.optionB,question.optionC,question.optionD)
+        val options = arrayOf("Not Answered",question.optionA,question.optionB,question.optionC,question.optionD)
 
         viewHolder.itemQuestion.text = "Q"+ (i+1) + ") " + question.question
-        viewHolder.itemUserAnswer.text = "Your Answer: "+options[userChoices.get(i).toInt()]
+        viewHolder.itemUserAnswer.text = "Your Answer: "+options[userChoices.get(i).toInt()+1]
         viewHolder.itemCorrectAnswer.text = "Correct Answer: " + options[Integer.valueOf(question.correctAnswer)]
 
 

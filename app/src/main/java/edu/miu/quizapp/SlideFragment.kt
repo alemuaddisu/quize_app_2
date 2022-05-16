@@ -1,52 +1,38 @@
 package edu.miu.quizapp
 
 import android.content.Context
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.view.*
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import edu.miu.quizapp.db.Question
 import edu.miu.quizapp.db.QuestionDatabase
-import edu.miu.quizapp.utils.BaseFragment
-import edu.miu.quizapp.utils.PrefManager
-import edu.miu.quizapp.utils.toast
-import kotlinx.coroutines.cancel
+import edu.miu.quizapp.utils.Utility
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
 
-class WelcomeFragment : BaseFragment() {
+class SlideFragment : BaseFragment() {
 
     private var viewPager: ViewPager? = null
     private var myViewPagerAdapter: MyViewPagerAdapter? = null
     private var dotsLayout: LinearLayout? = null
-    private lateinit var dots: Array<TextView?>
     private lateinit var layouts: IntArray
     private var btnSkip: Button? = null
     private var btnNext: Button? = null
     private var cancelButton: FloatingActionButton? = null
     private var nextButton: FloatingActionButton? = null
     private var prevButton: FloatingActionButton? = null
-    private var prefManager: PrefManager? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_welcome, container, false)
-        prefManager = PrefManager(context)
 
-        // Making notification bar transparent
         activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
         viewPager = view.findViewById(R.id.view_pager) as ViewPager
@@ -60,10 +46,9 @@ class WelcomeFragment : BaseFragment() {
         btnNext = view.findViewById(R.id.btn_next) as Button
 
         layouts = intArrayOf(
-            R.layout.welcome_slide1,
-            R.layout.welcome_slide2,
-            R.layout.welcome_slide3,
-            R.layout.welcome_slide4
+            R.layout.fragment_slide1,
+            R.layout.fragment_slide2,
+            R.layout.fragment_slide3
         )
 
 
@@ -76,7 +61,6 @@ class WelcomeFragment : BaseFragment() {
                 viewPager?.currentItem = currentPage + 1
                 prevButton?.isEnabled = true;
             } else {
-                prefManager!!.setFirstTimeLaunch(false)
                 Navigation.findNavController(requireView())
                     .navigate(R.id.action_welcomeFragment_to_homeFragment)
             }
@@ -92,7 +76,6 @@ class WelcomeFragment : BaseFragment() {
 
         }
         cancelButton!!.setOnClickListener{
-            prefManager!!.setFirstTimeLaunch(false)
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_welcomeFragment_to_homeFragment)
         }
@@ -114,8 +97,7 @@ class WelcomeFragment : BaseFragment() {
                     }
                     1 -> {
                         prevButton?.isEnabled = true;
-                    }
-                    layouts.size-2 -> {
+
                         nextButton?.isEnabled = true;
                     }
                 }

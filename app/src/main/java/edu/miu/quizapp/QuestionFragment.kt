@@ -10,7 +10,6 @@ import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import edu.miu.quizapp.db.Question
 import edu.miu.quizapp.db.QuestionDatabase
-import edu.miu.quizapp.utils.BaseFragment
 import kotlinx.coroutines.launch
 
 class QuestionFragment : BaseFragment()  {
@@ -20,7 +19,7 @@ class QuestionFragment : BaseFragment()  {
     var currentIndex =0
     var currentScore = 0
 
-    var userChoices = IntArray(15){i -> 2}
+    var userChoices = IntArray(15){i -> -1}
 
     lateinit var questions: List<Question>
 
@@ -94,7 +93,7 @@ class QuestionFragment : BaseFragment()  {
     }
 
     fun checkNextPage(): Boolean {
-        if(currentIndex +3 >= questions.size){
+        if(currentIndex +6 >= questions.size){
             val bundle = bundleOf("score" to currentScore,"userChoices" to userChoices)
             Navigation.findNavController(requireView()).navigate(R.id.action_questionFragment_to_resultFragment,bundle)
             return false

@@ -1,4 +1,4 @@
-package edu.miu.quizapp
+package edu.miu.quizapp.utils
 
 import android.content.Context
 import android.content.SharedPreferences
