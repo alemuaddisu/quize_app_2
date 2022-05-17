@@ -19,7 +19,7 @@ class QuestionFragment : BaseFragment()  {
     var currentIndex =0
     var currentScore = 0
 
-    var userChoices = IntArray(15){i -> -1}
+    var userChoices = IntArray(16){i -> -1}
 
     lateinit var questions: List<Question>
 

@@ -25,7 +25,7 @@ class HomeFragment : BaseFragment()  {
             context?.let {
                 val util =  Utility(it)
                 val topScore = util?.getTopScore()
-                scoreTextView.text = ""+topScore
+                scoreTextView.text = ""+(topScore*5)
             }
         }
 

@@ -39,7 +39,7 @@ class ResultFragment : BaseFragment() {
             util?.setTopScore(topScored)
         }
 
-        topScore.text = "" + topScored
+        topScore.text = "" + topScored*5
 
         backButton.setOnClickListener{
 

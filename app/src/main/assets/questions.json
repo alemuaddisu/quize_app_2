@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": "0",
     "question": "Who developed Kotlin?",
     "optionA": "IBM",
     "optionB": "GOOGLE",
@@ -10,7 +10,7 @@
     "userAnswer": ""
   },
   {
-    "id": "2",
+    "id": "1",
     "question": "Which extension is responsible to save Kotlin files ?",
     "optionA": ".kot",
     "optionB": ".android",
@@ -20,7 +20,7 @@
     "userAnswer": ""
   },
   {
-    "id": "5",
+    "id": "2",
     "question": "The two types of constructors in Kotlin are ?",
     "optionA": "Primary and Secondary constructor",
     "optionB": "First and the second constructor",
@@ -30,7 +30,7 @@
     "userAnswer": ""
   },
   {
-    "id": "7",
+    "id": "3",
     "question": "What handles null exceptions in Kotlin ?",
     "optionA": "Sealed classes",
     "optionB": "Lambda functions",
@@ -40,7 +40,7 @@
     "userAnswer": ""
   },
   {
-    "id": "8",
+    "id": "4",
     "question": "The correct function to get the length of a string in Kotlin language is ??",
     "optionA": "str.length",
     "optionB": "string(length)",
@@ -50,7 +50,7 @@
     "userAnswer": ""
   },
   {
-    "id": "1",
+    "id": "5",
     "question": " The function to print a line in Kotlin is ?",
     "optionA": "Printline()",
     "optionB": "println()",
@@ -60,7 +60,7 @@
     "userAnswer": ""
   },
   {
-    "id": "12",
+    "id": "6",
     "question": "In Kotlin",
     "optionA": " the default visibility modifier is ?sealed",
     "optionB": "public",
@@ -70,7 +70,7 @@
     "userAnswer": ""
   },
   {
-    "id": "1",
+    "id": "7",
     "question": " What defines a sealed class in Kotlin ??",
     "optionA": "Its another name for an abstract class",
     "optionB": "It represents restricted class hierarchies",
@@ -80,7 +80,7 @@
     "userAnswer": ""
   },
   {
-    "id": "1",
+    "id": "8",
     "question": " The default behavior of classes in Kotlin is ?",
     "optionA": "All classes are protected",
     "optionB": "All classes are sealed",
@@ -90,7 +90,7 @@
     "userAnswer": ""
   },
   {
-    "id": "7",
+    "id": "9",
     "question": "The functions in Kotlin can be divided into how many types ?",
     "optionA": "5",
     "optionB": "4",
@@ -100,7 +100,7 @@
     "userAnswer": ""
   },
   {
-    "id": "9",
+    "id": "10",
     "question": "What are the most important benefit/benefits of using Kotlin language ?",
     "optionA": "It is is a functional language and based on Java Virtual Machine",
     "optionB": "It is an expressive language that makes code readable and understandable",
@@ -110,7 +110,7 @@
     "userAnswer": ""
   },
   {
-    "id": "0",
+    "id": "11",
     "question": "Which are the basic data types in Kotlin ?",
     "optionA": "Arrays and Booleans",
     "optionB": "Characters",
@@ -120,7 +120,7 @@
     "userAnswer": ""
   },
   {
-    "id": "1",
+    "id": "12",
     "question": "Which of these features are available in Kotlin but not in the Java language ?",
     "optionA": "Operator overloading",
     "optionB": "Coroutines and Null safety",
@@ -130,7 +130,7 @@
     "userAnswer": ""
   },
   {
-    "id": "3",
+    "id": "13",
     "question": "s Kotlin really better than Java?",
     "optionA": "No,Java is better",
     "optionB": "Both have similar functionalities",
@@ -140,7 +140,7 @@
     "userAnswer": ""
   },
   {
-    "id": "2",
+    "id": "14",
     "question": "val short for Value",
     "optionA": "It can be changed but once only",
     "optionB": "It can be changed",
